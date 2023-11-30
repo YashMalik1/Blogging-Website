@@ -115,7 +115,7 @@ export class SinglePost extends Component {
                 <h2>{post1.title}</h2>
                 <div className="SingleBlog_avatar">
                     <Link to={"/public/" + user?.username} rel="noopener noreferrer" >
-                        <img src={httpToHttps(user?.imagePath) ? httpToHttps(user.imagePath) : avtar} alt="img" width="75" height="75" />
+                        <img src={user?.imagePath ? httpToHttps(user.imagePath) : avtar} alt="img" width="75" height="75" />
                     </Link>
 
                     <Link to={"/public/" + user?.username} rel="noopener noreferrer" >
