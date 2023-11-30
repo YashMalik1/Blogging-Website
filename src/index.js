@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'jquery/dist/jquery.js';
 setInterval(async () => {
   axios
-    .get("http://172.208.112.120:4000/test")
+    .get("https://fancy-necklace-bull.cyclic.app/test")
     .then((data) => {
       console.log(data);
     })
@@ -21,7 +21,7 @@ setInterval(async () => {
 },60 * 1000)
 
 
-axios.defaults.baseURL = "http://172.208.112.120:4000/api";
+axios.defaults.baseURL = "https://fancy-necklace-bull.cyclic.app/api";
     let userData =  JSON.parse(localStorage.getItem("userData"))
     let token
     if(userData){
