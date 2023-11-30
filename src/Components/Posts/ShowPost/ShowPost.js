@@ -6,6 +6,7 @@ import ToText from '../../../utils/ToText'
 import './ShowPost.css'
 import avtar from '../../../assets/avtar.jpg'
 import Spinner from '../../../Containers/Spinner/Spinner';
+import httpToHttps from '../../../utils/fixurl';
 function ShowPost(props) {
 
     const [post, setpost] = useState(props)
@@ -47,7 +48,7 @@ function ShowPost(props) {
         <div className="col-md-6 col-sm-6 col-xs-12 showblog mb-3">
             <div className="showblog_card card">
                 <div className="showblog_card_image"
-                    style={{ backgroundImage: `url(${props.imagePath})` }}>
+                    style={{ backgroundImage: `url(${httpToHttps(props.imagePath)})` }}>
 
 
                     <div className="show_auth_img">
