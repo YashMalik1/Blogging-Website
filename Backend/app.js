@@ -1,7 +1,6 @@
 const path = require("path");
 const express = require("express")
 const mongoose = require("mongoose")
-const db = require("./db/db")
 const header_middleware = require("./middlewares/header")
 
 const mongodburl = "mongodb+srv://priyansupp:pkj01072003@cluster0.ir1vrth.mongodb.net/blogging-website";
