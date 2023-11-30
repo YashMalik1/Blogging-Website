@@ -48,6 +48,7 @@ router.post("/create", checkAuth,
         const profile = new Profile({
             username: req.body.username,
             bio: req.body.bio,
+            upi: req.body.upi,
             imagePath: url + "/images/" + req.file.filename,
             creator: req.userData.userId
         })
@@ -94,6 +95,7 @@ router.post("/create", checkAuth,
                 _id: req.body.id,
                 username: req.body.username,
                 bio: req.body.bio,
+                upi: req.body.upi,
                 imagePath:imagePath,
                 creator: req.userData.userId
             })

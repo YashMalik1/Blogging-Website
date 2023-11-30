@@ -131,40 +131,82 @@ export class SinglePost extends Component {
             </>
             )
         }
-        return (<>
+        return (
+          <>
             {isLoading}
             {iserror}
-            <div className="container py-4 SingleBlog ">
-                <div className="row">
-                    {this.props.match.path === "/mypost/:id" &&
-                        <div className="col-md-3 col-xs-12 ">
-                            <div className="list-group">
-                                <Link to={"/edit/" + post1._id} className="list-group-item list-group-item-action">Edit</Link>
-                                <button type="button"  onClick={this.showModal} className="list-group-item list-group-item-action">Delete</button>
-                            </div>
-                        </div>}
-                    <div className="col-md-9 col-xs-12 main">
-                        <Modal show={this.state.show} handleClose={this.hideModal}>
-                            <div className="modal-header">
-                            <h2>{post1.title}</h2>
-                            <button type="button" className="close" data-dismiss="modal" onClick={this.hideModal}>&times;</button>
-                                
-                            </div>
-                            <div className="modal-body">
-                                Confirm delete
-                           </div>
-
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-danger" onClick={()=>this.deletePost(post1._id)}>Delete </button>
-                                <button type="button" className="btn btn-outline-dark" onClick={this.hideModal} data-dismiss="modal">Close</button>
-                            </div>
-                        </Modal>
-                        {post}
+            <div className='container py-4 SingleBlog '>
+              <div className='row'>
+                {this.props.match.path === "/mypost/:id" && (
+                  <div className='col-md-3 col-xs-12 '>
+                    <div className='list-group'>
+                      <Link
+                        to={"/edit/" + post1._id}
+                        className='list-group-item list-group-item-action'
+                      >
+                        Edit
+                      </Link>
+                      <button
+                        type='button'
+                        onClick={this.showModal}
+                        className='list-group-item list-group-item-action'
+                      >
+                        Delete
+                      </button>
                     </div>
+                  </div>
+                )}
+                <div className='col-md-9 col-xs-12 main'>
+                  <Modal show={this.state.show} handleClose={this.hideModal}>
+                    <div className='modal-header'>
+                      <h2>{post1.title}</h2>
+                      <button
+                        type='button'
+                        className='close'
+                        data-dismiss='modal'
+                        onClick={this.hideModal}
+                      >
+                        &times;
+                      </button>
+                    </div>
+                    <div className='modal-body'>Confirm delete</div>
+
+                    <div className='modal-footer'>
+                      <button
+                        type='button'
+                        className='btn btn-danger'
+                        onClick={() => this.deletePost(post1._id)}
+                      >
+                        Delete{" "}
+                      </button>
+                      <button
+                        type='button'
+                        className='btn btn-outline-dark'
+                        onClick={this.hideModal}
+                        data-dismiss='modal'
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </Modal>
+                  {post}
                 </div>
+                <div
+                  style={{
+                    display: "grid",
+                    placeItems: "center",
+                    width: "100%",
+                  }}
+                >
+                  <stripe-buy-button
+                    buy-button-id='buy_btn_1OI7y2SJpl8GTwfkEciASfek'
+                    publishable-key='pk_test_51OHvxUSJpl8GTwfkISL284nMlD4KW4fiwJM6HLYSl1dkP3yyNQfBpp02iOO5MOZKGECXNUlPjfb2pGMZx61yN2YL00aaGmS3F8'
+                  ></stripe-buy-button>
+                </div>
+              </div>
             </div>
-        </>
-        )
+          </>
+        );
     }
 }
 

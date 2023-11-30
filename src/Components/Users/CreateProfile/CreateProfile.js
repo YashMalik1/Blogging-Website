@@ -2,6 +2,7 @@ import Axios from 'axios';
 import React, { Component } from 'react'
 import ImageUpload from '../../../Containers/ImageUpload/ImageUpload'
 import Spinner from '../../../Containers/Spinner/Spinner'
+import validUPIRegex from '../../../utils/upiRegex'
 export class CreatePost extends Component {
     constructor(props) {
         super(props)
@@ -10,21 +11,23 @@ export class CreatePost extends Component {
             Post: {
                 id: '',
                 username: '',
+                upi: '',
                 bio: '',
                 imagePath: '',
                 created: ''
             },
             error: {
                 message: '',
-                code: ''
+                code: '',
             },
             isloading: false,
-
+            
             haserror: false,
             errors: {
                 username: '',
                 bio: '',
                 imagePath: '',
+                upi: ''
             }
         }
         this.mySubmitHandler = this.mySubmitHandler.bind(this);
@@ -43,7 +46,7 @@ export class CreatePost extends Component {
                 let post = data.data.profile
                 this.setState({
                     isloading: false,
-                    Post: { ...this.state.Post, id: post._id, username: post.username, bio: post.bio, imagePath: post.imagePath }
+                    Post: { ...this.state.Post, id: post._id, username: post.username, bio: post.bio, imagePath: post.imagePath, upi: post.upi }
                 });
             })
                 .catch(e => {
@@ -86,6 +89,15 @@ export class CreatePost extends Component {
                             ? 'username is required!'
                             : '';
                 }
+                break;
+
+            case 'upi':
+                if (value.length > 0) {
+                    errors.upi = !validUPIRegex.test(value)
+                      ? "Please enter a valid UPI Address!"
+                      : "";
+                }
+
                 break;
 
             case 'bio':
@@ -135,6 +147,7 @@ export class CreatePost extends Component {
             formData.append('username', this.state.Post.username);
             formData.append('bio', this.state.Post.bio);
             formData.append('image', this.state.Post.imagePath, this.state.Post.username);
+            formData.append('upi', this.state.Post.upi);
 
         }
         else {
@@ -143,6 +156,7 @@ export class CreatePost extends Component {
                 'username': this.state.Post.username,
                 'bio': this.state.Post.bio,
                 'image': this.state.Post.imagePath,
+                'upi': this.state.Post.upi
 
             }
         }
@@ -245,7 +259,7 @@ export class CreatePost extends Component {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="password">Password </label>
+                        <label htmlFor="password">Bio </label>
                         <textarea
                             type='text'
                             name='bio'
@@ -254,6 +268,20 @@ export class CreatePost extends Component {
                             className={"form-control " + (this.state.errors.bio ? 'is-invalid' : '')}
                             placeholder="Enter the  description"
                             required="required"
+                            onChange={this.myChangeHandler}
+                        />
+
+                        {this.state.errors.bio.length > 0 &&
+                            <div className="mt-1"><span className='error text-danger'>{this.state.errors.bio}</span></div>}
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="upi">UPI Address </label>
+                        <textarea
+                            type='text'
+                            name='upi'
+                            value={this.state.Post.upi}
+                            className={"form-control " + (this.state.errors.upi ? 'is-invalid' : '')}
+                            placeholder="Enter your UPI Address for donations"
                             onChange={this.myChangeHandler}
                         />
 

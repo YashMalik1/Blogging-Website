@@ -51,7 +51,7 @@ function ShowPost(props) {
 
 
                     <div className="show_auth_img">
-                        <Link to={"/public/" + post.user?.username} style={{ backgroundImage: `url(${post.user?.imagePath ? post.user.imagePath : avtar})` }}>By Mehul</Link>
+                        <Link to={"/public/" + post.user?.username} style={{ backgroundImage: `url(${post.user?.imagePath ? post.user.imagePath : avtar})` }}>By Yash</Link>
                     </div>
                 </div>
                 <div className="card-body">

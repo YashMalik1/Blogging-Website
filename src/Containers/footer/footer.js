@@ -7,7 +7,7 @@ function footer() {
     return (
         <>
             <footer className="fadeInUp col-md-12">
-                <a href="https://github.com/mehulk05/Blogapp-using-MERN" className="button github"><svg xmlns="http://www.w3.org/2000/svg"
+                <a href="https://github.com/YashMalik1/Blogging-Website" className="button github"><svg xmlns="http://www.w3.org/2000/svg"
                     width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
                     strokeLinecap="round" strokeLinejoin="round">
                     <path
@@ -16,16 +16,9 @@ function footer() {
                 </svg><span>Open Sourced on GitHub</span></a>
 
 
-
-                <a href="https://medium.com/@mehulkothari05/medium-blogs-on-your-react-app-a3898a729aad" className="button btn-light medium">
-                    <span><img className="img-circle" width="20" alt=""
-                        src="https://seeklogo.com/images/M/medium-logo-93CDCF6451-seeklogo.com.png" />Read about this Project
-                On MEDIUM</span></a>
-
-
                 <SocialMediaHorizontal />
             </footer>
-            <h5 className="text-center copyright"> © Copyrights reserved by Mehul Kothari</h5>
+            <h5 className="text-center copyright"> © Copyrights reserved by Yash Kumar Malik</h5>
         </>
     )
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+// import * as serviceWorker from './serviceWorker';
 import axios from 'axios';
 
 
@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import 'jquery/dist/jquery.js';
 setInterval(async () => {
-  axios.get("https://zany-periodic-fisherman.glitch.me/test").then(data=>{
+  axios.get("http://localhost:4000/test").then(data=>{
   console.log(data)
 })
 .catch(e=>{
@@ -19,8 +19,7 @@ setInterval(async () => {
 },60 * 1000)
 
 
-//axios.defaults.baseURL = 'http://localhost:3001/api';
-axios.defaults.baseURL = 'https://zany-periodic-fisherman.glitch.me/api';
+axios.defaults.baseURL = "http://172.208.112.120:4000/api";
     let userData =  JSON.parse(localStorage.getItem("userData"))
     let token
     if(userData){
@@ -65,4 +64,4 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// serviceWorker.unregister();
