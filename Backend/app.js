@@ -4,6 +4,9 @@ const mongoose = require("mongoose")
 const db = require("./db/db")
 const header_middleware = require("./middlewares/header")
 
+const mongodburl = "mongodb+srv://priyansupp:pkj01072003@cluster0.ir1vrth.mongodb.net/blogging-website";
+
+
 const postRouter = require("./Routes/post");
 const userRoutes = require("./Routes/user");
 const profileRoutes = require("./Routes/profile");
@@ -41,9 +44,22 @@ app.get('/test', (req, res) => {
     res.send('Hello World!')
 })
 
-// app.use((req, res, next) => {
-//     res.sendFile(path.join(__dirname, "angular", "index.html"))
-// });
-app.listen(PORT, (req, res) => {
-  console.log(`app is listening to PORT ${PORT}`)
-})
+mongoose.connect(
+  mongodburl,
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  },
+  (err) => {
+    if (!err) {
+      console.log("MongoDB Connection Succeeded.");
+      app.listen(PORT, (req, res) => {
+        console.log(`app is listening to PORT ${PORT}`);
+      });
+    } else {
+      console.log("Error in DB connection: " + err);
+    }
+  }
+);
+
