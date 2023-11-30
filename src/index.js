@@ -10,12 +10,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import 'jquery/dist/jquery.js';
 setInterval(async () => {
-  axios.get("http://localhost:4000/test").then(data=>{
-  console.log(data)
-})
-.catch(e=>{
-  console.log(e.response)
-})
+  axios
+    .get("http://172.208.112.120:4000/test")
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((e) => {
+      console.log(e.response);
+    });
 },60 * 1000)
 
 
