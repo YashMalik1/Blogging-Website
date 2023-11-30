@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import moment from "moment";
 import Spinner from '../../../Containers/Spinner/Spinner'
 import Modal from '../../../Containers/Modal/Modal'
+import httpToHttps from '../../../utils/fixurl'
 
 export class SinglePost extends Component {
     constructor(props) {
@@ -114,7 +115,7 @@ export class SinglePost extends Component {
                 <h2>{post1.title}</h2>
                 <div className="SingleBlog_avatar">
                     <Link to={"/public/" + user?.username} rel="noopener noreferrer" >
-                        <img src={user?.imagePath ? user.imagePath : avtar} alt="img" width="75" height="75" />
+                        <img src={httpToHttps(user?.imagePath) ? httpToHttps(user.imagePath) : avtar} alt="img" width="75" height="75" />
                     </Link>
 
                     <Link to={"/public/" + user?.username} rel="noopener noreferrer" >
@@ -123,7 +124,7 @@ export class SinglePost extends Component {
                     <p>{moment(post1.postDate).format("MMM DD, YYYY hh:mm")}</p>
                 </div>
                 <div className="singlePost_content pt-3">
-                    <img src={post1.imagePath} className="img-fluid" alt="prof" />
+                    <img src={httpToHttps(post1.imagePath)} className="img-fluid" alt="prof" />
                     <div className="text pt-3">
                         <p>{post1.content}</p>
                     </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import ToText from '../../../utils/ToText'
 import './ShowUser.css'
+import httpToHttps from '../../../utils/fixurl'
 
 function ShowUser(props) {
     return (
@@ -9,7 +10,7 @@ function ShowUser(props) {
             <ul className="list-unstyled">
                 <li>
                     <Link className="d-flex align-items-center" to={'/public/' + props.username}>
-                        <img src={props.imagePath} className="img-fluid mr-2" alt={props.username} />
+                        <img src={httpToHttps(props.imagePath)} className="img-fluid mr-2" alt={props.username} />
                     </Link>
                     <div className="podcaster">
                         <Link to={'/public/' + props.username}>

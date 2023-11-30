@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Spinner from '../../../Containers/Spinner/Spinner'
 import ShowPost from '../../Posts/ShowPost/ShowPost'
+import httpToHttps from '../../../utils/fixurl'
 import './Profile.css'
 export class Profile extends Component {
     constructor(props) {
@@ -126,7 +127,7 @@ export class Profile extends Component {
 
                         <div className="col-md-4 col-xs-12 order-1 order-lg-2">
                             <img className="img-fluid w-50 rounded-circle mb-3"
-                                src={profile.imagePath} alt={profile.username}></img>
+                                src={httpToHttps(profile.imagePath)} alt={profile.username}></img>
                         </div>
                     </div>
 
